@@ -22,7 +22,10 @@ public class UserDaoService {
    }
 
    public User findOne(int id) {
-        return users.stream().filter(u -> u.getId() == id).findFirst().orElseThrow();
+        return users.stream()
+                .filter(u -> u.getId() == id)
+                .findFirst()
+                .orElseThrow();
    }
 
    public User save(User user) {
@@ -31,5 +34,17 @@ public class UserDaoService {
        }
        users.add(user);
        return user;
+   }
+
+   public User deleteById(int id) {
+       User one = findOne(id);
+       users.remove(one);
+       return one;
+   }
+
+   public User updateNameById(int id, UserForm userForm) {
+       User one = findOne(id);
+       one.setName(userForm.getName());
+       return one;
    }
 }
