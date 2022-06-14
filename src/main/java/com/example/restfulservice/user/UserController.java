@@ -1,9 +1,11 @@
 package com.example.restfulservice.user;
 
+import com.example.restfulservice.exception.UserNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 
 @RequestMapping("/users")
@@ -20,7 +22,11 @@ public class UserController {
 
     @GetMapping("/{id}")
     public User retrieveUser(@PathVariable("id") int id) {
-        return userService.findOne(id);
+            try {
+                return userService.findOne(id);
+            } catch (NoSuchElementException e) {
+                throw new UserNotFoundException(String.format("ID[%s] not found", id), e);
+            }
     }
 
     @PostMapping("/add")
