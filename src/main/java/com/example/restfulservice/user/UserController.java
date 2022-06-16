@@ -6,6 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import javax.validation.Valid;
 import java.net.URI;
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -33,7 +34,7 @@ public class UserController {
     }
 
     @PostMapping
-    public ResponseEntity<User> createUser(@RequestBody UserForm userForm) {
+    public ResponseEntity<User> createUser(@RequestBody @Valid UserForm userForm) {
         User saveUser = userService.save(userForm.createUser());
 
         URI location = ServletUriComponentsBuilder.fromCurrentRequest()
