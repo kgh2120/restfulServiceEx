@@ -12,9 +12,9 @@ public class UserDaoService {
     private static List<User> users = new ArrayList<>();
     private static int sequence;
     static {
-        users.add(new User(++sequence,"test"+sequence, LocalDateTime.now()));
-        users.add(new User(++sequence,"test"+sequence, LocalDateTime.now()));
-        users.add(new User(++sequence,"test"+sequence, LocalDateTime.now()));
+        users.add(new User(++sequence,"test"+sequence, LocalDateTime.now(),"pass1","123123-1234123"));
+        users.add(new User(++sequence,"test"+sequence, LocalDateTime.now(),"pass2","123123-1234123"));
+        users.add(new User(++sequence,"test"+sequence, LocalDateTime.now(),"pass3","123123-1234123"));
    }
 
    public List<User> findAll() {
