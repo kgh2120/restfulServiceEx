@@ -30,7 +30,7 @@ class UserDaoServiceTest {
 
     @Test
     void save() {
-        User save = service.save(new User(null, "테스터4", LocalDateTime.now()));
+        User save = service.save(new User(null, "테스터4", LocalDateTime.now(),null,null));
         System.out.println(save);
         assertThat(save.getId()).isEqualTo(4);
     }
