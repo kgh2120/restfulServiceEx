@@ -6,6 +6,28 @@ spring:
 #    password:
 #    url: jdbc:h2:tcp://localhost/~/test
 
-
+  mvc:
+    pathmatch:
+      matching-strategy : ant_path_matcher
     messages:
       basename: messages
+  jpa:
+    show-sql: true
+
+
+  h2:
+    console:
+      enabled: true
+
+
+#  security:
+#    user:
+#      name: user
+#      password: 1234
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
